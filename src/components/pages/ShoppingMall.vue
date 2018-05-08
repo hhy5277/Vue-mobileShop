@@ -59,7 +59,7 @@
         <!--floor one area-->
         <div class="floorName">
             <div>
-                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <img src="../../../src/assets/images/1F.png" width="7%" />
                 <span>{{floorName1}}</span>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <!-- floorName twoFloor -->
         <div class="floorName">
             <div>
-                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <img src="../../../src/assets/images/2F.png" width="7%" />
                 <span>{{floorName2}}</span>
             </div>
         </div>
@@ -108,7 +108,7 @@
         <!-- floorName threeFloor -->
         <div class="floorName">
             <div>
-                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <img src="../../../src/assets/images/3F.png" width="7%" />
                 <span>{{floorName3}}</span>
             </div>
         </div>
@@ -301,10 +301,17 @@ export default {
 .floor-rule div:nth-child(odd) {
   border-right: 1px solid #ddd;
 }
-.floorName {
+.floorName > div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   text-align: center;
   font-size: 14px;
   padding: 0.5rem 0;
   color: #d74118;
+}
+.floorName >div >img {
+    margin-right: .3rem;
 }
 </style>
