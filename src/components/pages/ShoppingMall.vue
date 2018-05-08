@@ -55,6 +55,80 @@
               </swiper>
           </div>
         </div>
+
+        <!--floor one area-->
+        <div class="floorName">
+            <div>
+                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <span>{{floorName1}}</span>
+            </div>
+        </div>
+
+        <!-- floor oneData -->
+        <div class="floor">
+          <div class="floor-anomaly">
+            <div class="floor-one"><img :src="floor1_0.image" width="100%" /></div>
+              <div>
+                <div class="floor-two"><img :src="floor1_1.image" width="100%" /></div>
+                <div><img :src="floor1_2.image" width="100%" /></div>
+              </div>
+          </div>
+        </div>
+
+        <div class="floor-rule">
+          <div v-for="(item ,index) in floor1.slice(3)" :key="index">
+              <img :src="item.image" width="100%"/>
+          </div>
+        </div>
+
+        <!-- floorName twoFloor -->
+        <div class="floorName">
+            <div>
+                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <span>{{floorName2}}</span>
+            </div>
+        </div>
+        <!-- floor twoData -->
+        <div class="floor">
+          <div class="floor-anomaly">
+            <div class="floor-one"><img :src="floor3_0.image" width="100%" /></div>
+              <div>
+                <div class="floor-two"><img :src="floor3_1.image" width="100%" /></div>
+                <div><img :src="floor3_2.image" width="100%" /></div>
+              </div>
+          </div>
+        </div>
+
+        <div class="floor-rule">
+          <div v-for="(item ,index) in floor3.slice(3,5)" :key="index">
+              <img :src="item.image" width="100%"/>
+          </div>
+        </div>
+
+        <!-- floorName threeFloor -->
+        <div class="floorName">
+            <div>
+                <!-- <img v-lazy="cate.image" width="90%" /> -->
+                <span>{{floorName3}}</span>
+            </div>
+        </div>
+
+        <!-- floor threeData -->
+         <div class="floor">
+          <div class="floor-anomaly">
+            <div class="floor-one"><img :src="floor2_0.image" width="100%" /></div>
+              <div>
+                <div class="floor-two"><img :src="floor2_1.image" width="100%" /></div>
+                <div><img :src="floor2_2.image" width="100%" /></div>
+              </div>
+          </div>
+        </div>
+
+        <div class="floor-rule">
+          <div v-for="(item ,index) in floor2.slice(3)" :key="index">
+              <img :src="item.image" width="100%"/>
+          </div>
+        </div>
     </div>
 </template>
 
@@ -73,10 +147,25 @@ export default {
         }
       },
       locationIcon: require("../../assets/images/location.png"),
-      category: "", // 导航栏循环
-      adBanner: "", // 广告图
-      bannerPicArray: [], // 轮播图片
-      recommendGoods: [] //  推荐商品数据
+      category: "", //  导航栏循环
+      adBanner: "", //  广告图
+      bannerPicArray: [], //  轮播图片
+      recommendGoods: [], //  推荐商品数据
+      floor1: [], //   楼层1数据
+      floor2: [], //   楼层2数据
+      floor3: [], //   楼层3数据
+      floorName1: "", //  1层名称
+      floorName2: "", //  2层名称
+      floorName3: "", //   3层名称
+      floor1_0: "", //  下标获取不同数据
+      floor1_1: "",
+      floor1_2: "",
+      floor2_0: "",
+      floor2_1: "",
+      floor2_2: "",
+      floor3_0: "",
+      floor3_1: "",
+      floor3_2: ""
     };
   },
   components: { swiper, swiperSlide },
@@ -93,6 +182,21 @@ export default {
           this.adBanner = response.data.data.advertesPicture; //获得广告图片
           this.bannerPicArray = response.data.data.slides; // 轮播图片
           this.recommendGoods = response.data.data.recommend; //  推荐商品
+          this.floorName1 = response.data.data.floorName.floor1; //  楼层名字数据1层
+          this.floorName2 = response.data.data.floorName.floor2; //  楼层名字数据2层
+          this.floorName3 = response.data.data.floorName.floor3; //  楼层名字数据3层
+          this.floor1 = response.data.data.floor1; //楼层1数据
+          this.floor1_0 = this.floor1[0]; // 根据下标获取不同的数据
+          this.floor1_1 = this.floor1[1];
+          this.floor1_2 = this.floor1[2];
+          this.floor2 = response.data.data.floor2; //楼层3数据
+          this.floor2_0 = this.floor2[0];
+          this.floor2_1 = this.floor2[1];
+          this.floor2_2 = this.floor2[2];
+          this.floor3 = response.data.data.floor3; //楼层2数据
+          this.floor3_0 = this.floor3[0];
+          this.floor3_1 = this.floor3[1];
+          this.floor3_2 = this.floor3[2];
         } else {
           console.log(response);
         }
@@ -165,14 +269,42 @@ export default {
   font-size: 12px;
   text-align: center;
 }
-/* .swiper-slide {
-  height: 4rem;
-  text-align: center;
-  line-height: 4rem;
+.floor-anomaly {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
 }
-.swiper {
-  height: 7rem;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-} */
+.floor-anomaly div {
+  width: 10rem;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.floor-one {
+  border-right: 1px solid #dddddd;
+}
+.floor-two {
+  border-bottom: 1px solid #dddddd;
+}
+.floor-rule {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+.floor-rule div {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 10rem;
+  border-bottom: 1px solid #ddd;
+}
+.floor-rule div:nth-child(odd) {
+  border-right: 1px solid #ddd;
+}
+.floorName {
+  text-align: center;
+  font-size: 14px;
+  padding: 0.5rem 0;
+  color: #d74118;
+}
 </style>
