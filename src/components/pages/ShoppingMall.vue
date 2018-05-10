@@ -63,85 +63,38 @@
                 <span>{{floorName1}}</span>
             </div>
         </div>
+        <floorComponent :floorData="floor1"></floorComponent>
 
-        <!-- floor oneData -->
-        <div class="floor">
-          <div class="floor-anomaly">
-            <div class="floor-one"><img :src="floor1_0.image" width="100%" /></div>
-              <div>
-                <div class="floor-two"><img :src="floor1_1.image" width="100%" /></div>
-                <div><img :src="floor1_2.image" width="100%" /></div>
-              </div>
-          </div>
-        </div>
-
-        <div class="floor-rule">
-          <div v-for="(item ,index) in floor1.slice(3)" :key="index">
-              <img :src="item.image" width="100%"/>
-          </div>
-        </div>
-
-        <!-- floorName twoFloor -->
+        <!-- floor two area -->
         <div class="floorName">
             <div>
                 <img src="../../../src/assets/images/2F.png" width="7%" />
                 <span>{{floorName2}}</span>
             </div>
         </div>
-        <!-- floor twoData -->
-        <div class="floor">
-          <div class="floor-anomaly">
-            <div class="floor-one"><img :src="floor3_0.image" width="100%" /></div>
-              <div>
-                <div class="floor-two"><img :src="floor3_1.image" width="100%" /></div>
-                <div><img :src="floor3_2.image" width="100%" /></div>
-              </div>
-          </div>
-        </div>
+        <floorComponent :floorData="floor2"></floorComponent>
 
-        <div class="floor-rule">
-          <div v-for="(item ,index) in floor3.slice(3,5)" :key="index">
-              <img :src="item.image" width="100%"/>
-          </div>
-        </div>
-
-        <!-- floorName threeFloor -->
+        <!-- floor three area -->
         <div class="floorName">
             <div>
                 <img src="../../../src/assets/images/3F.png" width="7%" />
                 <span>{{floorName3}}</span>
             </div>
         </div>
+        <floorComponent :floorData="floor3"></floorComponent>
 
-        <!-- floor threeData -->
-         <div class="floor">
-          <div class="floor-anomaly">
-            <div class="floor-one"><img :src="floor2_0.image" width="100%" /></div>
-              <div>
-                <div class="floor-two"><img :src="floor2_1.image" width="100%" /></div>
-                <div><img :src="floor2_2.image" width="100%" /></div>
-              </div>
-          </div>
-        </div>
-
-        <div class="floor-rule">
-          <div v-for="(item ,index) in floor2.slice(3)" :key="index">
-              <img :src="item.image" width="100%"/>
-          </div>
-        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
+import floorComponent from "../component/floorComponent";
 import "swiper/dist/css/swiper.css";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   data() {
     return {
-      slide: [1, 2, 3, 4, 5, 6],
       swiperOption: {
-        // direction: "vertical",
         pagination: {
           el: ".swiper-pagination"
         }
@@ -156,23 +109,14 @@ export default {
       floor3: [], //   楼层3数据
       floorName1: "", //  1层名称
       floorName2: "", //  2层名称
-      floorName3: "", //   3层名称
-      floor1_0: "", //  下标获取不同数据
-      floor1_1: "",
-      floor1_2: "",
-      floor2_0: "",
-      floor2_1: "",
-      floor2_2: "",
-      floor3_0: "",
-      floor3_1: "",
-      floor3_2: ""
+      floorName3: "" //   3层名称
     };
   },
-  components: { swiper, swiperSlide },
+  components: { swiper, swiperSlide, floorComponent },
   created() {
     axios({
       url:
-        "https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/index",
+        "https://www.easy-mock.com/mock/5af3a581656ea22f99b56083/mobileShop/index",
       method: "get"
     })
       .then(response => {
@@ -186,17 +130,8 @@ export default {
           this.floorName2 = response.data.data.floorName.floor2; //  楼层名字数据2层
           this.floorName3 = response.data.data.floorName.floor3; //  楼层名字数据3层
           this.floor1 = response.data.data.floor1; //楼层1数据
-          this.floor1_0 = this.floor1[0]; // 根据下标获取不同的数据
-          this.floor1_1 = this.floor1[1];
-          this.floor1_2 = this.floor1[2];
           this.floor2 = response.data.data.floor2; //楼层3数据
-          this.floor2_0 = this.floor2[0];
-          this.floor2_1 = this.floor2[1];
-          this.floor2_2 = this.floor2[2];
           this.floor3 = response.data.data.floor3; //楼层2数据
-          this.floor3_0 = this.floor3[0];
-          this.floor3_1 = this.floor3[1];
-          this.floor3_2 = this.floor3[2];
         } else {
           console.log(response);
         }
@@ -269,38 +204,6 @@ export default {
   font-size: 12px;
   text-align: center;
 }
-.floor-anomaly {
-  display: flex;
-  flex-direction: row;
-  background-color: #ffffff;
-  border-bottom: 1px solid #dddddd;
-}
-.floor-anomaly div {
-  width: 10rem;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-.floor-one {
-  border-right: 1px solid #dddddd;
-}
-.floor-two {
-  border-bottom: 1px solid #dddddd;
-}
-.floor-rule {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: #fff;
-}
-.floor-rule div {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 10rem;
-  border-bottom: 1px solid #ddd;
-}
-.floor-rule div:nth-child(odd) {
-  border-right: 1px solid #ddd;
-}
 .floorName > div {
   display: flex;
   justify-content: center;
@@ -311,7 +214,7 @@ export default {
   padding: 0.5rem 0;
   color: #d74118;
 }
-.floorName >div >img {
-    margin-right: .3rem;
+.floorName > div > img {
+  margin-right: 0.3rem;
 }
 </style>
