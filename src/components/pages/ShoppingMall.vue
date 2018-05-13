@@ -82,7 +82,6 @@
             </div>
         </div>
         <floorComponent :floorData="floor3"></floorComponent>
-
     </div>
 </template>
 
@@ -199,8 +198,7 @@ export default {
   border-bottom: 1px solid #eee;
 }
 .recommend-item {
-  width: 99%;
-  border-right: 1px solid #eee;
+  width: 100%;
   font-size: 12px;
   text-align: center;
 }
