@@ -56,32 +56,18 @@
           </div>
         </div>
 
-        <!--floor one area-->
         <div class="floorName">
-            <div>
-                <img src="../../../src/assets/images/1F.png" width="7%" />
-                <span>{{floorName1}}</span>
-            </div>
+            <img src="../../../src/assets/images/1F.png" width="7%" />
         </div>
-        <floorComponent :floorData="floor1"></floorComponent>
-
-        <!-- floor two area -->
+        <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
         <div class="floorName">
-            <div>
-                <img src="../../../src/assets/images/2F.png" width="7%" />
-                <span>{{floorName2}}</span>
-            </div>
+            <img src="../../../src/assets/images/2F.png" width="7%" />
         </div>
-        <floorComponent :floorData="floor2"></floorComponent>
-
-        <!-- floor three area -->
+        <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
         <div class="floorName">
-            <div>
-                <img src="../../../src/assets/images/3F.png" width="7%" />
-                <span>{{floorName3}}</span>
-            </div>
+            <img src="../../../src/assets/images/3F.png" width="7%" />
         </div>
-        <floorComponent :floorData="floor3"></floorComponent>
+        <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
     </div>
 </template>
 
@@ -106,9 +92,7 @@ export default {
       floor1: [], //   楼层1数据
       floor2: [], //   楼层2数据
       floor3: [], //   楼层3数据
-      floorName1: "", //  1层名称
-      floorName2: "", //  2层名称
-      floorName3: "" //   3层名称
+      floorName: {} //  楼层名称
     };
   },
   components: { swiper, swiperSlide, floorComponent },
@@ -125,9 +109,7 @@ export default {
           this.adBanner = response.data.data.advertesPicture; //获得广告图片
           this.bannerPicArray = response.data.data.slides; // 轮播图片
           this.recommendGoods = response.data.data.recommend; //  推荐商品
-          this.floorName1 = response.data.data.floorName.floor1; //  楼层名字数据1层
-          this.floorName2 = response.data.data.floorName.floor2; //  楼层名字数据2层
-          this.floorName3 = response.data.data.floorName.floor3; //  楼层名字数据3层
+          this.floorName = response.data.data.floorName; //楼层名称
           this.floor1 = response.data.data.floor1; //楼层1数据
           this.floor2 = response.data.data.floor2; //楼层3数据
           this.floor3 = response.data.data.floor3; //楼层2数据
@@ -202,17 +184,18 @@ export default {
   font-size: 12px;
   text-align: center;
 }
-.floorName > div {
+.floorName {
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   text-align: center;
   font-size: 14px;
-  padding: 0.5rem 0;
+  /* padding: 0.5rem 0; */
   color: #d74118;
 }
-.floorName > div > img {
-  margin-right: 0.3rem;
+.floorName > img {
+  /* margin-right: 0.3rem; */
+  margin-top: 0.3rem;
 }
 </style>
