@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!--floor one area-->
+        <div class="floor-title">{{floorTitle}}</div>
         <div class="floor">
             <div class="floor-anomaly">
                 <div class="floor-one"><img :src="floorData0.image" width="100%" /></div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ["floorData"],
+  props: ["floorData", "floorTitle"],
   data() {
     return {
       floorData0: {},
@@ -41,7 +41,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 .floor-anomaly {
   display: flex;
@@ -76,5 +75,12 @@ export default {
 }
 .floor-rule div:nth-child(odd) {
   border-right: 1px solid #ddd;
+}
+.floor-title {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  color: #d74118;
 }
 </style>
