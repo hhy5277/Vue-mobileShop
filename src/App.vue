@@ -8,12 +8,23 @@
 </template>
 
 <script>
+import Vue from "vue";
 import tabs from "@/components/component/tabs";
+import { List } from "vant";
+Vue.use(List);
+
+// import {toMoney} from '@/filter/moneyFilter.js';
+
 export default {
   name: "App",
   components: {
     tabs
   }
+  //   filters:{
+  //       moneyFilter(money){
+  //           return toMoney(money);
+  //       }
+  //   }
 };
 </script>
 
