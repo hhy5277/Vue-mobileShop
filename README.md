@@ -64,11 +64,13 @@ npm run build
 
 ## 部分截图
 
+- 使用chrome手机模式观看
 <!-- ![首页](./src/printscreen/1.png)
 ![首页](./src/printscreen/2.png)
 ![首页](./src/printscreen/3.png)
 ![首页](./src/printscreen/4.png)
 ![首页](./src/printscreen/5.png)
 ![首页](./src/printscreen/6.png) -->
+
 
 
