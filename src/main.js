@@ -9,7 +9,6 @@ import { Button, Row, Col ,Search , Swipe , SwipeItem , Lazyload  } from 'vant'
 Vue.use(Button).use(Row).use(Col).use(Search).use(Swipe).use(SwipeItem).use(Lazyload)
 // require styles
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
