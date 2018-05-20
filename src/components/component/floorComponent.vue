@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="floor-title">{{floorTitle}}</div>
         <div class="floor">
+        <div class="floor-title">{{floorTitle}}</div>
             <div class="floor-anomaly">
                 <div class="floor-one"><img :src="floorData0.image" width="100%" /></div>
                 <div>
