@@ -68,6 +68,20 @@
             <img src="../../../src/assets/images/3F.png" width="7%" />
         </div>
         <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
+
+        <!-- Hot Area -->
+        <!-- <div class="hot-area">
+            <div class="hot-title">热卖商品</div>
+            <div class="hot-goods">
+                <van-list>
+                    <van-row>
+                        <van-col span='12' v-for="(item,index) in hotGoods" :key="index">
+                            <div>{{ item.name }}</div>
+                        </van-col>
+                    </van-row>
+                </van-list>
+            </div>
+        </div> -->
     </div>
 </template>
 
@@ -92,7 +106,8 @@ export default {
       floor1: [], //   楼层1数据
       floor2: [], //   楼层2数据
       floor3: [], //   楼层3数据
-      floorName: {} //  楼层名称
+      floorName: {}, // 楼层名称
+      hotGoods: [] // 热卖商品
     };
   },
   components: { swiper, swiperSlide, floorComponent },
@@ -113,6 +128,7 @@ export default {
           this.floor1 = response.data.data.floor1; //楼层1数据
           this.floor2 = response.data.data.floor2; //楼层3数据
           this.floor3 = response.data.data.floor3; //楼层2数据
+          this.hotGoods = response.data.data.hotGoods; //热卖商品
         } else {
           console.log(response);
         }
@@ -197,5 +213,11 @@ export default {
 .floorName > img {
   /* margin-right: 0.3rem; */
   margin-top: 0.3rem;
+}
+.hot-area {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
 }
 </style>
