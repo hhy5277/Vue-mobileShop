@@ -56,47 +56,47 @@
           </div>
         </div>
 
-        <div class="floorName">
+        <!-- <div class="floorName">
             <img src="../../../src/assets/images/1F.png" width="7%" />
-        </div>
+        </div> -->
         <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
-        <div class="floorName">
+        <!-- <div class="floorName">
             <img src="../../../src/assets/images/2F.png" width="7%" />
-        </div>
+        </div> -->
         <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
-        <div class="floorName">
+        <!-- <div class="floorName">
             <img src="../../../src/assets/images/3F.png" width="7%" />
-        </div>
+        </div> -->
         <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
 
         <!-- Hot Area -->
-        <!-- <div class="hot-area">
+        <div class="hot-area">
             <div class="hot-title">热卖商品</div>
             <div class="hot-goods">
                 <van-list>
-                    <van-row>
+                    <van-row gutter='20'>
                         <van-col span='12' v-for="(item,index) in hotGoods" :key="index">
-                            <div>{{ item.name }}</div>
+                            <goodsInfo :goodsImage="item.image" :goodsName='item.name' :goodsPrice='item.price'></goodsInfo>
                         </van-col>
                     </van-row>
                 </van-list>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
-import floorComponent from "../component/floorComponent";
+import url from "@/serviceApi.config.js";
 import "swiper/dist/css/swiper.css";
+import goodsInfo from "../component/goodsInfoComponent";
+import floorComponent from "../component/floorComponent";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 export default {
   data() {
     return {
       swiperOption: {
-        pagination: {
-          el: ".swiper-pagination"
-        }
+        sildesPerView: 3,
       },
       locationIcon: require("../../assets/images/location.png"),
       category: "", //  导航栏循环
@@ -110,11 +110,10 @@ export default {
       hotGoods: [] // 热卖商品
     };
   },
-  components: { swiper, swiperSlide, floorComponent },
+  components: { swiper, swiperSlide, floorComponent, goodsInfo },
   created() {
     axios({
-      url:
-        "https://www.easy-mock.com/mock/5af3a581656ea22f99b56083/mobileShop/index",
+      url: url.getShoppingMallInfo,
       method: "get"
     })
       .then(response => {
@@ -191,6 +190,7 @@ export default {
   font-size: 14px;
   padding: 0.2rem;
   color: #e5017d;
+  text-align: center;
 }
 .recommend-body {
   border-bottom: 1px solid #eee;
@@ -207,11 +207,9 @@ export default {
   align-items: center;
   text-align: center;
   font-size: 14px;
-  /* padding: 0.5rem 0; */
   color: #d74118;
 }
 .floorName > img {
-  /* margin-right: 0.3rem; */
   margin-top: 0.3rem;
 }
 .hot-area {
@@ -219,5 +217,8 @@ export default {
   font-size: 14px;
   height: 1.8rem;
   line-height: 1.8rem;
+}
+.hot-title {
+  color: #d74118;
 }
 </style>
