@@ -13,25 +13,17 @@ import tabs from "@/components/component/tabs";
 import { List } from "vant";
 Vue.use(List);
 
-// import {toMoney} from '@/filter/moneyFilter.js';
-
 export default {
   name: "App",
   components: {
     tabs
   }
-  //   filters:{
-  //       moneyFilter(money){
-  //           return toMoney(money);
-  //       }
-  //   }
 };
 </script>
 
 <style>
 #app {
   background-color: #f0f0f0;
-  padding-bottom: 2.8rem;
 }
 .fade-enter {
   opacity: 0;
