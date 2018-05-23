@@ -53,12 +53,17 @@ npm run build
 ├── index.html          	 // 项目入口文件
 ├── package.json      		 // 项目配置文件
 ├── static       			 // 放置静态资源
+|—— service                  // 后台配置文件
 ├── src                		 // 生产目录
+|   |—— assets               // 图片
 │   ├── common          	 // 公共的js,fonts资源,以及可以复用的公共组件，如Loading等
 │   ├── components     		 // 各业务组件
 │   ├── App.vue         	 // 主页面
 │   ├── router    		     // 路由配置
-│   └── main.js       	     // Webpack 预编译入口
+│   ├── servieApi            // url封装
+│   └── main.js       	     // 项目引入配置
+
+
 
 ```
 
