@@ -1,5 +1,5 @@
 <template>
-     <div>
+    <div>
         <div class="search-bar">
             <van-row>
                 <van-col span="3">
@@ -13,7 +13,6 @@
                 </van-col>
             </van-row>
         </div>
-
         <!--swiper area-->
         <div class="swiper-area">
             <van-swipe :autoplay="1000">
@@ -22,54 +21,39 @@
                 </van-swipe-item>
             </van-swipe>
         </div>
-
-        <!-- type-bar -->
+        <!--type bar-->
         <div class="type-bar">
-            <div  v-for="(cate,index) in category" :key="index" >
-                <img v-lazy="cate.image" width="90%" />
+            <div v-for="(cate,index) in category" :key="index">
+                <img v-lazy="cate.image" width="90%">
                 <span>{{cate.mallCategoryName}}</span>
+
             </div>
         </div>
-
-        <!--AD banner area-->
-        <div class="ad-banner">
-            <img v-lazy="adBanner.PICTURE_ADDRESS" width="100%">
+        <!--adbanner area-->
+        <div>
+            <img v-lazy="adBanner" width="100%" />
         </div>
-
-        <!-- Recommend  goods area -->
+        <!--Recommend goods area-->
         <div class="recommend-area">
-          <div class="recommend-title">
-            商品推荐
-          </div>
-          <div class="recommend-body">
-              <!-- swiper -->
-              <swiper :options="swiperOption">
-                <swiper-slide v-for="(item,index) in recommendGoods " :key="index">
-                    <div class="recommend-item">
-                      <img :src="item.image" width="80%">
-                      <div>{{item.goodsName}}</div>
-                      <div>￥{{item.price}}(￥{{item.mallPrice}})</div>
-                    </div>
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-              </swiper>
-          </div>
+            <div class="recommend-title">
+                商品推荐
+            </div>
+            <div class="recommend-body">
+                <swiper :options="swiperOption">
+                   <swiper-slide v-for="(item,index) in recommendGoods " :key="index" >
+                       <div class="recommend-item">
+                           <img :src="item.image" width="80%">
+                           <div>{{item.goodsName}}</div>
+                           <div>￥{{item.price}}(￥{{item.mallPrice}})</div>
+                       </div>
+                   </swiper-slide>
+                </swiper>
+            </div>
         </div>
-
-        <!-- <div class="floorName">
-            <img src="../../../src/assets/images/1F.png" width="7%" />
-        </div> -->
-        <floorComponent :floorData="floor1" :floorTitle="floorName.floor1"></floorComponent>
-        <!-- <div class="floorName">
-            <img src="../../../src/assets/images/2F.png" width="7%" />
-        </div> -->
-        <floorComponent :floorData="floor2" :floorTitle="floorName.floor2"></floorComponent>
-        <!-- <div class="floorName">
-            <img src="../../../src/assets/images/3F.png" width="7%" />
-        </div> -->
-        <floorComponent :floorData="floor3" :floorTitle="floorName.floor3"></floorComponent>
-
-        <!-- Hot Area -->
+        <floor-component :floorData="floor1" :floorTitle="floorName.floor1"></floor-component>
+        <floor-component :floorData="floor2" :floorTitle="floorName.floor2"></floor-component>
+        <floor-component :floorData="floor3" :floorTitle="floorName.floor3"></floor-component>
+         <!-- Hot Area -->
         <div class="hot-area">
             <div class="hot-title">热卖商品</div>
             <div class="hot-goods">
@@ -87,17 +71,19 @@
 
 <script>
 import axios from "axios";
-import url from "@/serviceApi.config.js";
 import "swiper/dist/css/swiper.css";
-import goodsInfo from "../component/goodsInfoComponent";
-import floorComponent from "../component/floorComponent";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
+import url from "@/serviceApi.config.js";
+import floorComponent from "../component/floorComponent";
+import goodsInfo from "../component/goodsInfoComponent";
+
 export default {
   data() {
     return {
       swiperOption: {
-        sildesPerView: 3,
+        slidesPerView: 3
       },
+      msg: "Shopping Mall",
       locationIcon: require("../../assets/images/location.png"),
       category: "", //  导航栏循环
       adBanner: "", //  广告图
@@ -120,7 +106,7 @@ export default {
         console.log(response);
         if (response.status == 200) {
           this.category = response.data.data.category; // 导航栏图片
-          this.adBanner = response.data.data.advertesPicture; //获得广告图片
+          this.adBanner = response.data.data.advertesPicture.PICTURE_ADDRESS; //获得广告图片
           this.bannerPicArray = response.data.data.slides; // 轮播图片
           this.recommendGoods = response.data.data.recommend; //  推荐商品
           this.floorName = response.data.data.floorName; //楼层名称
@@ -141,12 +127,10 @@ export default {
 
 <style scoped>
 .search-bar {
+  height: 2.2rem;
   background-color: #e5017d;
-}
-.van-row {
-  display: -webkit-flex;
-  justify-content: center;
-  align-items: center;
+  line-height: 2.2rem;
+  overflow: hidden;
 }
 .search-input {
   width: 100%;
@@ -154,9 +138,9 @@ export default {
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
-  border-bottom: 1px solid 1px !important;
+  border-bottom: 1px solid #fff !important;
   background-color: #e5017d;
-  color: #ffffff;
+  color: #fff;
 }
 .location-icon {
   padding-top: 0.2rem;
@@ -167,6 +151,7 @@ export default {
   max-height: 15rem;
   overflow: hidden;
 }
+
 .type-bar {
   background-color: #fff;
   margin: 0 0.3rem 0.3rem 0.3rem;
@@ -182,7 +167,7 @@ export default {
   text-align: center;
 }
 .recommend-area {
-  background-color: #ffffff;
+  background-color: #fff;
   margin-top: 0.3rem;
 }
 .recommend-title {
@@ -190,35 +175,19 @@ export default {
   font-size: 14px;
   padding: 0.2rem;
   color: #e5017d;
-  text-align: center;
 }
 .recommend-body {
   border-bottom: 1px solid #eee;
 }
 .recommend-item {
-  width: 100%;
+  width: 99%;
+  border-right: 1px solid #eee;
   font-size: 12px;
   text-align: center;
 }
-.floorName {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 14px;
-  color: #d74118;
-}
-.floorName > img {
-  margin-top: 0.3rem;
-}
-.hot-area {
-  text-align: center;
-  font-size: 14px;
-  height: 1.8rem;
-  line-height: 1.8rem;
-}
 .hot-title {
   color: #d74118;
+  text-align: center;
+  padding: 8px 0;
 }
 </style>
