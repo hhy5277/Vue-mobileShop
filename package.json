@@ -15,6 +15,7 @@
   "dependencies": {
     "ajv": "^6.0.0",
     "axios": "^0.18.0",
+    "mongoose": "^5.1.2",
     "vant": "^1.1.0",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
