@@ -42,6 +42,13 @@ export default {
 };
 </script>
 <style scoped>
+.floor-title {
+  text-align: center;
+  font-size: 14px;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  color: #d74118;
+}
 .floor-anomaly {
   display: flex;
   flex-direction: row;
@@ -76,11 +83,5 @@ export default {
 .floor-rule div:nth-child(odd) {
   border-right: 1px solid #ddd;
 }
-.floor-title {
-  text-align: center;
-  font-size: 14px;
-  height: 1.8rem;
-  line-height: 1.8rem;
-  color: #d74118;
-}
+
 </style>
