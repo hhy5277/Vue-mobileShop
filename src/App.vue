@@ -24,6 +24,7 @@ export default {
 <style>
 #app {
   background-color: #f0f0f0;
+  padding-bottom: 3.5rem;
 }
 .fade-enter {
   opacity: 0;
