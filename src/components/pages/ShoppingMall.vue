@@ -26,7 +26,6 @@
             <div v-for="(cate,index) in category" :key="index">
                 <img v-lazy="cate.image" width="90%">
                 <span>{{cate.mallCategoryName}}</span>
-
             </div>
         </div>
         <!--adbanner area-->
