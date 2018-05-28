@@ -1,29 +1,41 @@
-// 引入Mongoose Mongoose是一个开源的封装好的实现Node和MongoDB数据通讯的数据建模库。
+const db = "mongodb://locahost/simle-db";
 const mongoose = require('mongoose');
 
-// 声明变量 获取地址
-const db = "mongodb://locahost/simle-db";
+exports.connect = () => {
+  // 连接数据库
+  mongoose.connect(db);
 
-mongoose.Promise = global.Promise;
+  let maxConnectTimes = 0
 
-exports.connect = ()=>{
-    // 连接数据库
-    mongoose.connect(db);
+  return new Promise((resolove, reject) => {
 
-    // 增加数据库连接的事件监听
-    mongoose.connection.on('disconnected',()=>{
-        // 进行重连
+    // 增加数据库监听事件
+    mongoose.connection.on('disconnected', () => {
+      // 进行重连
+      console.log('数据库断开')
+      if (maxConnectTimes < 3) {
+        maxConnectTimes++;
         mongoose.connect(db);
+      } else {
+        reject()
+        throw new Error('数据库出现问题，程序无法解决，需人为处理');
+      }
     })
 
     // 数据库出现错误的时候
-    mongoose.connection.on('error',err=>{
-        console.log(err);
+    mongoose.connection.on('error', err => {
+      console.log('数据库错误');
+      if (maxConnectTimes < 3) {
+        maxConnectTimes++;
         mongoose.connect(db);
+      } else {
+        reject(err)
+        throw new Error('数据库出现问题，程序无法解决，需人为处理')
+      }
     })
-
     // 链接打开的时候
-    mongoose.connection.once('open',()=>{
-        console.log("MongoDB Connected successFly!")
+    mongoose.connection.once('open', () => {
+      console.log("MongoDB Connected successFly!")
     })
+  })
 }
