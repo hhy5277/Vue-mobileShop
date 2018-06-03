@@ -1,19 +1,38 @@
-// 引入koa2
-const koa = require('koa')
-//  引入初始化数据库js
-const {connect} = require('./database/init.js')
-// 声明koa 赋值给变量
-const app = new koa();
+const Koa = require('koa')
+const app = new Koa()
+const mongoose = require('mongoose')
+const {
+  connect,
+  initSchemas
+} = require('./database/init.js')
 
-// 页面打印koa是否引入成功
-app.use(async (ctx) => {
-  ctx.body = `<h1>hello koa2</h1>`
-})
-// 监听，判断服务是不是启动成功
-app.listen('3000', () => {
-  console.log('[server] starting at port 3000')
-});
-// 立即执行函数
-async () => {
+//立即执行函数
+;
+(async () => {
   await connect()
-}
+  initSchemas()
+  const User = mongoose.model('User')
+  let oneUser = new User({
+    userName: 'lxjay13',
+    password: '123456'
+  })
+
+  oneUser.save().then(() => {
+    console.log('插入成功')
+
+  })
+  let users = await User.findOne({}).exec()
+
+  console.log('------------------')
+  console.log(users)
+  console.log('------------------')
+})()
+
+
+app.use(async (ctx) => {
+  ctx.body = '<h1>hello Koa2</h1>'
+})
+
+app.listen(3000, () => {
+  console.log('[Server] starting at port 3000')
+})
