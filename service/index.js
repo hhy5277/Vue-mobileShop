@@ -1,6 +1,7 @@
 const Koa = require('koa')
-const app = new Koa()
-const mongoose = require('mongoose')
+const app = new Koa();
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 const {
   connect,
   initSchemas
