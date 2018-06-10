@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');// 引入mongoose
 const Schema = mongoose.Schema; // 声明schema
 let ObjectId = Schema.Types.ObjectId//  声明object类型
+const bcrypt = require('bcrypt');
 
 // 创建用户的Schema
 
@@ -10,6 +11,16 @@ const userSchema = new Schema ({
     password:String,
     createAt:{type:Date,default:Date.now()},
     lastLoginAt:{type:Date,default:Date.now()}
+})
+userSchema.pre('save',(text)=>{
+    bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
+        if(err) return next (err)
+        bcrypt.hash(this.password,salt,(err,hash)=>{
+            if(err) return next (err)
+            this.password = hash
+            next()
+        })
+    })
 })
 
 // 发布模型
