@@ -3,7 +3,7 @@
     <transition name='fade' mode="out-in">
         <router-view/>
     </transition>
-    <tabs></tabs>
+    <!-- <tabs></tabs> -->
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 <style>
 #app {
   background-color: #f0f0f0;
-  padding-bottom: 3.5rem;
+  /* padding-bottom: 3.5rem; */
 }
 .fade-enter {
   opacity: 0;
