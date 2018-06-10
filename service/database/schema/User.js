@@ -12,7 +12,7 @@ const userSchema = new Schema ({
     createAt:{type:Date,default:Date.now()},
     lastLoginAt:{type:Date,default:Date.now()}
 })
-userSchema.pre('save',(text)=>{
+userSchema.pre('save',function (text){
     bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
         if(err) return next (err)
         bcrypt.hash(this.password,salt,(err,hash)=>{
