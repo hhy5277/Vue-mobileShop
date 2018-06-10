@@ -34,9 +34,9 @@ export default new Router({
       name: 'Register',
       component: Register
     },
-    {
-      path: '*',
-      redirect: '/',
-    },
+    // {
+    //   path: '*',
+    //   redirect: '/',
+    // },
   ]
 })

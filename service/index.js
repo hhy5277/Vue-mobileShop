@@ -1,10 +1,13 @@
 const Koa = require('koa')
 const app = new Koa();
 const mongoose = require('mongoose');
-const {
-  connect,
-  initSchemas
-} = require('./database/init.js')
+const {connect,initSchemas} = require('./database/init.js')
+const Router = require('koa-router')
+let user = require('./appApi/user.js')
+let router = new Router();
+router.use('/user',user.routes())
+app.use(router.routes());
+app.use(router.allowedMethods())
 
 //立即执行函数
 ;
