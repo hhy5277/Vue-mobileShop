@@ -10,9 +10,6 @@
 <script>
 import Vue from "vue";
 import tabs from "@/components/component/tabs";
-import { List } from "vant";
-Vue.use(List);
-
 export default {
   name: "App",
   components: {
@@ -24,7 +21,7 @@ export default {
 <style>
 #app {
   background-color: #f0f0f0;
-  /* padding-bottom: 3.5rem; */
+  padding-bottom: 3.5rem;
 }
 .fade-enter {
   opacity: 0;
