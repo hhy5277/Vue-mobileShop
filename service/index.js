@@ -5,6 +5,10 @@ const mongoose = require('mongoose')
 
 const Router = require('koa-router')
 
+const bodyParser = require('koa-bodyparser'); // 解析请求中间件
+
+const cors = require('koa2-cors')   // 解决跨域中间件
+
 let user = require('./appApi/user.js')
 let home = require('./appApi/home.js')
 
@@ -18,6 +22,8 @@ router.use('/home',home.routes())
 
 app.use(router.routes())
 app.use(router.allowedMethods())
+app.use(bodyParser())
+app.use(cors())
 
 
 // ;(async ()=>{
