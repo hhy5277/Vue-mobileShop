@@ -33,6 +33,7 @@
 
 <script>
 import axios from "axios";
+import { Toast } from "vant";
 import url from "@/serviceAPI.config.js";
 export default {
   data() {
@@ -52,10 +53,16 @@ export default {
         }
       })
         .then(response => {
-          console.log(response);
+          if (response.data.code == 200) {
+            Toast.success("注册成功");
+          } else {
+            Toast.fail("注册失败");
+            console.log(response.data.message);
+            console.log(response.data.code);
+          }
         })
         .catch(error => {
-          console.log(error);
+          Toast.fail("注册失败");
         });
     },
     goBack() {
