@@ -25,7 +25,7 @@
 
             />
             <div class="register-button">
-                <van-button type="primary" @click="axiosRegisterUser" size="large">马上注册</van-button>
+                <van-button type="primary" @click="axiosRegisterUser" :loading="openLoading" size="large">马上注册</van-button>
             </div>
          </div>
     </div>
@@ -39,7 +39,8 @@ export default {
   data() {
     return {
       username: "",
-      password: ""
+      password: "",
+      openLoading: false //是否开启用户的Loading
     };
   },
   methods: {
@@ -55,14 +56,17 @@ export default {
         .then(response => {
           if (response.data.code == 200) {
             Toast.success("注册成功");
+            this.$router.push("/");
           } else {
             Toast.fail("注册失败");
             console.log(response.data.message);
             console.log(response.data.code);
+            this.openLoading = true;
           }
         })
         .catch(error => {
           Toast.fail("注册失败");
+          this.openLoading = true;
         });
     },
     goBack() {
