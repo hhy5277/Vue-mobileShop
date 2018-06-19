@@ -1,21 +1,57 @@
-# SmileVue
+# 移动商城
 
-> 这是一个课程项目，使用了Vue的技术，完成移动端商城的基本功能。课程超过20小时的内容，
+一个以vue开发的移动电子商城
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
+#### 技术栈
 
-# serve with hot reload at localhost:8080
-npm run dev
+- Vue2：采用最新Vue2的语法
+- vue-router：管理单页面应用路由
+- vuex:状态管理器
+- node:后端架构
+- koa2:后端服务
+- mongoDB:数据库
+- mongoose:数据库连接
+- axios：发起http请求
+- Webpack：自动化构建工具，主要配置vue-cli脚手架提供。
+- ES6：采用ES6语法。
 
-# build for production with minification
-npm run build
+#### 功能介绍
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+- 功能
+    - 首页
+    - 分类
+    - 购物车
+    - 会员中心
+    - 登录
+    - 注册
+- UI框架统一为vant
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#### 安装运行（安装运行前请确定已安装node环境）
+
+- 环境安装：npm install
+- 启动服务：npm run dev
+- 发布代码：npm run build
+
+#### 项目构成
+
+<pre>
+├── build                       // 构建服务和webpack配置
+├── config            		    // 项目不同环境的配置
+├── dist               		    // 项目build目录
+├── index.html          	    // 项目入口文件
+├── package.json      		    // 项目配置文件
+├── static       			    // 放置静态资源
+├── src                		    // 生产目录
+│   ├── api       			    // api请求
+│   ├── assets                  // 图片资源
+│   ├── components     		    // 各种组件
+│   ├── filter                  // 过滤器
+│   ├── router       	        // 路由配置
+│   ├── App.vue         	    // 主页面
+│   ├── main.js       	        // Webpack 预编译入口
+│   ├── serviceAPI.config       // 网络请求
+└──
+</pre>
+
+#### 部分截图
