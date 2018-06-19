@@ -8,10 +8,10 @@
 - Vue2：采用最新Vue2的语法
 - vue-router：管理单页面应用路由
 - vuex:状态管理器
-- node:后端架构
-- koa2:后端服务
+- node:后端服务
+- koa2:后端框架
 - mongoDB:数据库
-- mongoose:数据库连接
+- mongoose:数据建模库（连接mongoDB）
 - axios：发起http请求
 - Webpack：自动化构建工具，主要配置vue-cli脚手架提供。
 - ES6：采用ES6语法。
