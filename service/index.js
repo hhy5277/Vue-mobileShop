@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const Router = require('koa-router')
+let goods = require('./appApi/goods.js')
+router.use('/goods',goods.routes())
 
 
 app.use(bodyParser())
