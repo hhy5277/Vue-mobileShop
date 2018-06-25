@@ -6,8 +6,8 @@ let router = new Router();
 const mongoose = require('mongoose');
 const fs = require('fs');
 
-router.get('/insertAllGoodsInfo', async (ctx) => {
-  fs.readFile('./goods.json', 'utf8', (err, data) => {
+router.get('/insertAllCategory', async (ctx) => {
+  fs.readFile('./data_json/category.json', 'utf8', (err, data) => {
     data = JSON.parse(data);
     let saveCount = 0;
     const goods = mongoose.model('Goods');
