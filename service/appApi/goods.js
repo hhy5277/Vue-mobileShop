@@ -44,16 +44,14 @@ router.get('/insertAllCategory',async(ctx)=>{
 });
 //***获取商品详细信息的接口
 router.post('/getDetailGoodsInfo',async(ctx)=>{
-    let goodsId = ctx.request.body.goodsId
-    const Goods = mongoose.model('Goods')
-    await Goods.findOne({ID:goodsId}).exec()
-    .then(async(result)=>{
+    try{
+        let goodsId = ctx.request.body.goodsId
+        const Goods = mongoose.model('Goods')
+        let result=await Goods.findOne({ID:goodsId}).exec()
         ctx.body={code:200,message:result}
-    })
-    .catch(error=>{
-        console.log(error)
-        ctx.body={code:500,message:error}
-    })
+    }catch(err){
+        ctx.body={code:500,message:err}
+    }
 
 })
 
