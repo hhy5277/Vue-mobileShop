@@ -14,6 +14,8 @@
             }
         },
         created(){
+            this.goodsId = this.$router.query.goodsId
+            console.log(this.goodsId)
             this.getInfo()
         },
         methods: {
