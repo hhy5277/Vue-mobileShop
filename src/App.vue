@@ -9,11 +9,11 @@
 
 <script>
 import Vue from "vue";
-import tabs from "@/components/component/tabs";
+// import tabs from "@/components/component/tabs";
 export default {
   name: "App",
   components: {
-    tabs
+    // tabs
   }
 };
 </script>
