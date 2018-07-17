@@ -13,6 +13,13 @@
                 <van-col span="18">右侧列表</van-col>
             </van-row>
         </div>
+        <div id="leftNav">
+        <ul>
+            <li @click="clickCategory(index)" :class="{categoryActive:categoryIndex==index}"  v-for="(item,index) in category" :key="index">
+                {{item.MALL_CATEGORY_NAME}}
+            </li>
+         </ul>
+</div>
     </div>
 </template>
 
@@ -21,7 +28,14 @@ import axios from "axios";
 import url from "@/serviceAPI.config.js";
 export default {
   data() {
-    return {};
+    return {
+      category: [],
+      categoryIndex: 0
+    };
+  },
+  mounted() {
+    let winHeight = document.documentElement.clientHeight;
+    document.getElementById("leftNav").style.height = winHeight - 46 + "px";
   },
   created() {
     this.getCategory();
@@ -35,6 +49,7 @@ export default {
         console.log(response);
 
         if (response.data.code == 200 && response.data.message) {
+          this.category = response.data.message;
         } else {
           Toast("服务器错误，数据取得失败");
         }
@@ -42,9 +57,23 @@ export default {
       .catch(error => {
         console.log(error);
       });
+  },
+  //点击大类的方法
+  clickCategory(index) {
+    this.categoryIndex = index;
   }
 };
 </script>
 
-<style>
+<style scoped>
+#leftNav ul li {
+  line-height: 2rem;
+  border-bottom: 1px solid #e4e7ed;
+  padding: 3px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.categoryActive {
+  background-color: #fff;
+}
 </style>
