@@ -14,12 +14,18 @@
             </van-row>
         </div>
         <div id="leftNav">
-        <ul>
-            <li @click="clickCategory(index)" :class="{categoryActive:categoryIndex==index}"  v-for="(item,index) in category" :key="index">
-                {{item.MALL_CATEGORY_NAME}}
-            </li>
-         </ul>
-</div>
+            <ul>
+                <li @click="clickCategory(index)" :class="{categoryActive:categoryIndex==index}"  v-for="(item,index) in category" :key="index">
+                    {{item.MALL_CATEGORY_NAME}}
+                </li>
+            </ul>
+        </div>
+        <div class="tabCategorySub">
+            <van-tabs v-model="active">
+                <van-tab v-for="(item, index) in categorySub" :key="index" :title="item.MALL_SUB_NAME">
+                </van-tab>
+            </van-tabs>
+        </div>
     </div>
 </template>
 
@@ -46,8 +52,7 @@ export default {
       method: "get"
     })
       .then(response => {
-        console.log(response);
-
+        this.getCategorySubByCategoryId(this.category[0].ID);
         if (response.data.code == 200 && response.data.message) {
           this.category = response.data.message;
         } else {
@@ -58,9 +63,29 @@ export default {
         console.log(error);
       });
   },
+  //根据大类ID读取小类类别列表
+  getCategorySubByCategoryId(categoryId) {
+    axios({
+      url: url.getCategorySubList,
+      method: "post",
+      data: { categoryId: categoryId }
+    })
+      .then(response => {
+        if (response.data.code == 200 && response.data.message) {
+          this.categorySub = response.data.message;
+          this.active = 0;
+        } else {
+          Toast("服务器错误，数据取得失败");
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
   //点击大类的方法
-  clickCategory(index) {
+  clickCategory(index, categoryId) {
     this.categoryIndex = index;
+    this.getCategorySubByCategoryId(categoryId);
   }
 };
 </script>

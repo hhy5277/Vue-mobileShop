@@ -110,6 +110,16 @@ router.get('/getGoodsListByCategorySubID',async(ctx)=>{
     }
 
 })
+router.Post('/getCategorySubList',async(ctx)=>{
+    try {
+        let categoryId  =  ctx.request.body.categoryId;
+        const CategorySub = mongoose.model('CategorySub');
+        let result =  await CategorySub.find({MALL_CATEGORY_ID:categoryId}).exec()
+        ctx.body = {code:200,message:result}
+    } catch (error) {
+        ctx.body = {code:500,message:err}
+    }
+})
 
 
 
