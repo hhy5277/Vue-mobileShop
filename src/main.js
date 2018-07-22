@@ -3,9 +3,22 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Tab,Tabs,Button, Row, Col, Swipe, SwipeItem , Lazyload ,List ,Field, NavBar } from 'vant'
+import {
+  Tab,
+  Tabs,
+  Button,
+  Row,
+  Col,
+  Swipe,
+  SwipeItem,
+  Lazyload,
+  List,
+  Field,
+  NavBar,
+  PullRefresh
+} from 'vant'
 
-Vue.use(Tab).use(Tabs).use(Field).use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List)
+Vue.use(Tab).use(Tabs).use(Field).use(NavBar).use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(List).use(PullRefresh)
 
 
 Vue.config.productionTip = false
@@ -14,6 +27,8 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
