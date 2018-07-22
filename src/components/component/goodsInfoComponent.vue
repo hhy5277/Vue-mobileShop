@@ -9,27 +9,27 @@
 </template>
 
 <script>
-import { toMoney } from "@/filter/moneyFilter.js";
-export default {
-  props: ["goodsImage", "goodsName", "goodsPrice", "goodsId"],
-  filters: {
-    moneyFilter(money) {
-      return toMoney(money);
+    import {toMoney}  from '@/filter/moneyFilter.js'
+    export default {
+        props:['goodsImage','goodsName','goodsPrice','goodsId'],
+        filters:{
+            moneyFilter(money){
+                return toMoney(money)
+            }
+        },
+        methods: {
+            goGoodsPage() {
+                this.$router.push({name:'Goods',query:{goodsId:this.goodsId}})
+            }
+        },
     }
-  },
-  methods: {
-    goGoodsPage() {
-      this.$router.push({ name: "Goods", query: { goodsId: this.goodsId } });
-    }
-  }
-};
 </script>
 
 <style scoped>
-.goods-name {
-  padding: 0 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+ .goods-name{
+        padding: 0 8px;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space:nowrap; 
+    }
 </style>
