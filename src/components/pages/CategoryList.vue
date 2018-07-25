@@ -30,13 +30,17 @@
         </div>
         <div id="list-div">
             <van-pull-refresh v-model="isRefresh" @refresh="onRefresh">
-                <van-list
+               <van-list
                     v-model="loading"
                     :finished="finished"
                     @load="onLoad"
                     >
-                    <div class="list-item" v-for="item in list" :key="item">
-                        {{item}}
+                    <div class="list-item" v-for="(item,index) in goodList" :key="index">
+                        <div class="list-item-img"><img :src="item.IMAGE1" width="100%"/></div>
+                        <div class="list-item-text">
+                            <div>{{item.NAME}}</div>
+                            <div class="">￥{{item.ORI_PRICE}}</div>
+                        </div>
                     </div>
                 </van-list>
             </van-pull-refresh>
@@ -57,7 +61,10 @@ export default {
       list: [],
       loading: false, //上拉加载使用
       finished: false, //下拉加载是否没有数据了
-      isRefresh: false //下拉加载
+      isRefresh: false, //下拉加载
+      page: 1, //商品列表的页数
+      goodList: [], //商品信息
+      categorySubId: "" //商品子分类ID
     };
   },
   created() {
@@ -71,14 +78,11 @@ export default {
   methods: {
     onLoad() {
       setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
-        }
-        this.loading = false;
-        if (this.list.length >= 40) {
-          this.finished = true;
-        }
-      }, 500);
+        this.categorySubId = this.categorySubId
+          ? this.categorySubId
+          : this.categorySub[0].ID;
+        this.getGoodList();
+      }, 1000);
     },
     onRefresh() {
       setTimeout(() => {
@@ -126,6 +130,49 @@ export default {
         .catch(error => {
           console.log(error);
         });
+    },
+    getGoodList() {
+      axios({
+        url: url.getGoodsListByCategorySubID,
+        method: "post",
+        data: {
+          categorySubId: this.categorySubId,
+          page: this.page
+        }
+      })
+        .then(response => {
+          console.log(response);
+          if (response.data.code == 200 && response.data.message.length) {
+            this.page++;
+            this.goodList = this.goodList.concat(response.data.message);
+          } else {
+            this.finished = true;
+          }
+          this.loading = false;
+          console.log(this.finished);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    //点击子类获取商品信息
+    onClickCategorySub(index, title) {
+      //console.log( this.categorySub)
+      this.categorySubId = this.categorySub[index].ID;
+      console.log(this.categorySubId);
+
+      this.goodList = [];
+      this.finished = false;
+      this.page = 1;
+      this.onLoad();
+    },
+    //点击大类的方法
+    clickCategory(index, categoryId) {
+      this.categoryIndex = index;
+      this.page = 1;
+      this.finished = false;
+      this.goodList = [];
+      this.getCategorySubByCategoryId(categoryId);
     }
   }
 };
@@ -146,12 +193,22 @@ export default {
   background-color: #fff;
 }
 .list-item {
-  text-align: center;
-  line-height: 80px;
+  display: flex;
+  flex-direction: row;
+  font-size: 0.8rem;
   border-bottom: 1px solid #f0f0f0;
   background-color: #fff;
+  padding: 5px;
 }
 #list-div {
   overflow: scroll;
+}
+.list-item-img {
+  flex: 8;
+}
+.list-item-text {
+  flex: 16;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 </style>
