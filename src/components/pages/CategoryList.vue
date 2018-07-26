@@ -76,21 +76,6 @@ export default {
     document.getElementById("list-div").style.height = winHeight - 90 + "px";
   },
   methods: {
-    onLoad() {
-      setTimeout(() => {
-        this.categorySubId = this.categorySubId
-          ? this.categorySubId
-          : this.categorySub[0].ID;
-        this.getGoodList();
-      }, 1000);
-    },
-    onRefresh() {
-      setTimeout(() => {
-        this.isRefresh = false;
-        this.list = [];
-        this.onLoad();
-      }, 500);
-    },
     getCategory() {
       axios({
         url: url.getCateGoryList,
@@ -173,6 +158,23 @@ export default {
       this.finished = false;
       this.goodList = [];
       this.getCategorySubByCategoryId(categoryId);
+    },
+    onLoad() {
+      setTimeout(() => {
+        this.categorySubId = this.categorySubId
+          ? this.categorySubId
+          : this.categorySub[0].ID;
+        this.getGoodList();
+      }, 1000);
+    },
+    onRefresh() {
+      setTimeout(() => {
+        this.isRefresh = false;
+        this.finished = false;
+        this.goodList = [];
+        this.page = 1;
+        this.onLoad();
+      }, 500);
     }
   }
 };
