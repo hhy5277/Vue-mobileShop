@@ -196,4 +196,5 @@ export default {
   height: 1.8rem;
   line-height: 1.8rem;
 }
+
 </style>
