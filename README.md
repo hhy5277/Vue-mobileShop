@@ -40,22 +40,22 @@
 #### 项目构成
 
 <pre>
-├── build// 构建服务和webpack配置
-├── config// 项目不同环境的配置
-├── dist// 项目build目录
-├── index.html// 项目入口文件
-├── package.json// 项目配置文件
-├── static// 放置静态资源
-├── service// 接口服务
-├── src// 生产目录
-│   ├── api// api请求
-│   ├── assets// 图片资源
-│   ├── components// 各种组件
-│   ├── filter// 过滤器
-│   ├── router// 路由配置
-│   ├── App.vue// 主页面
-│   ├── main.js// Webpack 预编译入口
-│   ├── serviceAPI.config// 网络请求
+├── build                           // 构建服务和webpack配置
+├── config                          // 项目不同环境的配置
+├── dist                            // 项目build目录
+├── index.html                      // 项目入口文件
+├── package.json                    // 项目配置文件
+├── static                          // 放置静态资源
+├── service                         // 接口服务
+├── src                             // 生产目录
+│   ├── api                         // api请求
+│   ├── assets                      // 图片资源
+│   ├── components                  // 各种组件
+│   ├── filter                      // 过滤器
+│   ├── router                      // 路由配置
+│   ├── App.vue                     // 主页面
+│   ├── main.js                     // Webpack 预编译入口
+│   ├── serviceAPI.config           // 网络请求
 └──
 </pre>
 
