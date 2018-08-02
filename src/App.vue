@@ -11,6 +11,11 @@ export default {
 </script>
 
 <style>
+html,
+body {
+  background: #f0f0f0;
+  height: 100%;
+}
 #app {
   background-color: #f0f0f0;
 }
