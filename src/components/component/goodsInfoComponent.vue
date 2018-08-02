@@ -26,6 +26,11 @@ export default {
 </script>
 
 <style scoped>
+.goods-info {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin: 5px 0;
+}
 .goods-name {
   padding: 0 8px;
   overflow: hidden;
