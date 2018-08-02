@@ -9,7 +9,10 @@
               <van-col span="6">
                   <div id="leftNav">
                        <ul>
-                           <li @click="clickCategory(index,item.ID)" :class="{categoryActice:categoryIndex==index}" v-for="(item , index) in category" :key="index">
+                           <li @click="clickCategory(index,item.ID)"
+                           :class="{categoryActice:categoryIndex==index}"
+                           v-for="(item , index) in category"
+                           :key="index">
                                {{item.MALL_CATEGORY_NAME}}
                            </li>
                        </ul>
@@ -17,7 +20,6 @@
 
               </van-col>
               <van-col span="18">
-
                   <div class="tabCategorySub">
                       <van-tabs v-model="active" @click="onClickCategorySub">
                           <van-tab v-for="(item,index) in categorySub" :key="index" :title="item.MALL_SUB_NAME">
@@ -35,9 +37,6 @@
                                     width="100%"
                                     :onerror="errorImg"
                                      />
-
-
-
                                 </div>
                                 <div class="list-item-text">
                                     <div>{{item.NAME}}</div>
@@ -50,7 +49,6 @@
               </van-col>
           </van-row>
         </div>
-
     </div>
 </template>
 
