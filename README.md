@@ -31,7 +31,11 @@
 
 - 环境安装：npm install
 - 启动服务：npm run dev
-- 发布代码：npm run build
+- 压缩代码：npm run build
+- Tips:
+- 本地运行，先启动mongoDB，进入service文件夹下
+- 输入node index.js 命令启动连接数据库
+- npm run dev 启动服务即可
 
 #### 项目构成
 
