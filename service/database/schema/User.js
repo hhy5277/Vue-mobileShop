@@ -12,8 +12,8 @@ const userSchema = new Schema({
     createAt:{type:Date, default:Date.now()},
     lastLoginAt:{type:Date, default:Date.now()}
 },{
-  collection:'user'  
-}) 
+  collection:'user'
+})
 userSchema.pre('save', function(next){
     bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{
         if(err) return next(err)
