@@ -32,11 +32,15 @@
 - 环境安装：npm install
 - 启动服务：npm run dev
 - 压缩代码：npm run build
+
+#### 本地运行注意事项
 <pre>
-- Tips:本地运行，先启动mongoDB，进入service文件夹下
+- clone下来 先在C盘新建data文件夹 data文件夹内新建db文件夹，
+- 再启动mongoDB，进入项目内service文件夹下
 - 再输入node index.js 命令启动连接数据库
 - npm run dev 启动服务即可
 </pre>
+
 #### 项目构成
 
 <pre>
