@@ -46,7 +46,7 @@
 ├── index.html                      // 项目入口文件
 ├── package.json                    // 项目配置文件
 ├── static                          // 放置静态资源
-├── service                         // 接口服务
+├── service                         // 接口服务器配置
 ├── src                             // 生产目录
 │   ├── api                         // api请求
 │   ├── assets                      // 图片资源
