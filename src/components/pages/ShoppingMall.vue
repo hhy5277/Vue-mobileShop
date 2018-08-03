@@ -196,5 +196,7 @@ export default {
   height: 1.8rem;
   line-height: 1.8rem;
 }
-
+.hot-title {
+  color: #f8886e;
+}
 </style>
