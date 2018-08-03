@@ -53,6 +53,7 @@ export default {
   font-size: 14px;
   height: 1.8rem;
   line-height: 1.8rem;
+  color: #f8886e;
 }
 .floor-anomaly {
   display: flex;
