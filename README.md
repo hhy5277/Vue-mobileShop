@@ -35,7 +35,8 @@
 
 #### 本地运行注意事项
 <pre>
-- clone下来 先在C盘新建data文件夹 data文件夹内新建db文件夹，
+- clone下来 先在C盘新建data文件夹 data文件夹内新建db文件夹
+- 执行appApi下内的方法获取数据
 - 再启动mongoDB，进入项目内service文件夹下
 - 再输入node index.js 命令启动连接数据库
 - npm run dev 启动服务即可
