@@ -17,7 +17,8 @@ import {
   Field,
   NavBar,
   Tabbar,
-  TabbarItem
+  TabbarItem,
+  Stepper
 } from 'vant'
 Vue.use(PullRefresh)
   .use(Tab)
@@ -32,7 +33,8 @@ Vue.use(PullRefresh)
   .use(Lazyload)
   .use(List)
   .use(Tabbar)
-  .use(TabbarItem);
+  .use(TabbarItem)
+  .use(Stepper);
 
 
 Vue.config.productionTip = false
