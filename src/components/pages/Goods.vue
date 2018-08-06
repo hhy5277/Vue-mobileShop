@@ -54,7 +54,9 @@ export default {
   },
   // 查询路由携带的ID,打印出来，调用请求
   created() {
-    this.goodsId = this.$route.query.goodsId;
+    this.goodsId = this.$route.query.goodsId
+      ? this.$route.query.goodsId
+      : this.$route.params.goodsId;
     console.log(this.goodsId);
     this.getInfo();
   },
