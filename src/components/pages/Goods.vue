@@ -25,10 +25,10 @@
         </div>
         <div class="goods-bottom">
             <div>
-                <van-button size="large" type="primary" @click="addGoodsToCart">加入购物车</van-button>
+                <van-button size="large" type="primary" plain @click="addGoodsToCart">加入购物车</van-button>
             </div>
             <div>
-                <van-button size="large" type="danger">直接购买</van-button>
+                <van-button size="large" type="danger" plain>直接购买</van-button>
             </div>
         </div>
     </div>
@@ -46,11 +46,13 @@ export default {
       goodsInfo: {} //商品详细信息
     };
   },
+  //   价格过滤器
   filters: {
     moneyFilter(money) {
       return toMoney(money);
     }
   },
+  // 查询路由携带的ID,打印出来，调用请求
   created() {
     this.goodsId = this.$route.query.goodsId;
     console.log(this.goodsId);
@@ -61,6 +63,7 @@ export default {
     onClickLeft() {
       this.$router.go(-1);
     },
+    // 拿ID去数据库取数据
     getInfo() {
       axios({
         url: url.getDetailGoodsInfo,
@@ -80,32 +83,29 @@ export default {
           console.log(err);
         });
     },
+    // 加入购物车
     addGoodsToCart() {
-      //取出购物车内的商品数据
       let cartInfo = localStorage.cartInfo
         ? JSON.parse(localStorage.cartInfo)
         : [];
-      //判断购物车内是否已经有这个商品
-      //如果没有返回undeifnd，如果有返回第一个查找到的数据
       let isHaveGoods = cartInfo.find(cart => cart.goodsId == this.goodsId);
       console.log(isHaveGoods);
+      console.log(this.goodsInfo);
       if (!isHaveGoods) {
-        //没有商品直接添加到数组中
-        //重新组成添加到购物车的信息
         let newGoodsInfo = {
           goodsId: this.goodsInfo.ID,
-          Name: this.goodsInfo.Name,
+          name: this.goodsInfo.NAME,
           price: this.goodsInfo.PRESENT_PRICE,
           image: this.goodsInfo.IMAGE1,
           count: 1
         };
-        cartInfo.push(newGoodsInfo); //添加到购物车
-        localStorage.cartInfo = JSON.stringify(cartInfo); //操作本地数据
+        cartInfo.push(newGoodsInfo);
+        localStorage.cartInfo = JSON.stringify(cartInfo);
         Toast.success("添加成功");
       } else {
         Toast.success("已有此商品");
       }
-      this.$router.push({ name: "Cart" }); //进行跳转
+      this.$router.push({ name: "Cart" });
     }
   }
 };
