@@ -46,7 +46,7 @@ export default {
       goodsInfo: {} //商品详细信息
     };
   },
-  //   价格过滤器
+  // 价格过滤器
   filters: {
     moneyFilter(money) {
       return toMoney(money);
