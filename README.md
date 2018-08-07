@@ -32,7 +32,7 @@
 - 环境安装：npm install
 - 启动服务：npm run dev
 - 压缩代码：npm run build
-
+- node版本: ">=6.0"，对应需要升级node-sass，不然使用不了！
 #### 本地运行注意事项
 <pre>
 - clone下来 先在C盘新建data文件夹 data文件夹内新建db文件夹
