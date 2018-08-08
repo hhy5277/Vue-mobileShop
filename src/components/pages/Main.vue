@@ -44,13 +44,10 @@ export default {
     changeTabBarActive() {
       this.nowPath = this.$route.path;
       if (this.nowPath == "/") {
-          console.log('执行首页')
         this.active = 0;
       } else if (this.nowPath == "/CategoryList") {
-          console.log('执行分类')
         this.active = 1;
       } else if (this.nowPath == "/Cart") {
-          console.log('执行购物车')
         this.active = 2;
       }
     }
