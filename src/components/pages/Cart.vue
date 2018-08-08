@@ -1,11 +1,7 @@
 <template>
     <div>
         <div class="navbar-div">
-            <van-nav-bar
-                title="购物车"
-                left-text="返回"
-                left-arrow
-                @click-left="onClickLeft"/>
+            <van-nav-bar title="购物车"/>
         </div>
         <!--显示购物车中的商品-->
         <div class="cart-list">
@@ -93,10 +89,6 @@ export default {
       localStorage.removeItem("cartInfo");
       this.cartInfo = [];
     },
-    // 返回上层路径
-    onClickLeft() {
-      this.$router.replace({ path: "/" });
-    }
   }
 };
 </script>
