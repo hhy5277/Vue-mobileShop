@@ -67,6 +67,5 @@
 #### 部分截图
 
 ![首页](./src/assets/images/1.gif)
-![首页](./src/assets/images/2.gif)
-![商品详情](./src/assets/images/3.gif)
-![分类](./src/assets/images/4.gif)
+![分类](./src/assets/images/2.gif)
+![购物车](./src/assets/images/3.gif)
