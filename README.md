@@ -68,9 +68,9 @@
 
 # 部分截图
 
-### 首页商品页
+#### 首页商品页
 <img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/1.gif" width="400" height="710"/>
-### 分类列表页
+#### 商品分类页
 <img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/2.gif" width="400" height="710"/>
-### 购物车
+#### 购物车页
 <img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/3.gif" width="400" height="710"/>
