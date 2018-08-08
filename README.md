@@ -3,7 +3,7 @@
 一个以vue开发的移动电子商城
 
 
-# 技术栈
+### 技术栈
 
 - Vue2：采用最新Vue2的语法
 - vue-router：管理单页面应用路由
@@ -16,7 +16,7 @@
 - Webpack：自动化构建工具，主要配置vue-cli脚手架提供。
 - ES6：采用ES6语法。
 
-# 功能介绍
+### 功能介绍
 
 - 功能
     - 首页
@@ -27,14 +27,14 @@
     - 注册
 - UI框架统一为vant
 
-# 安装运行（安装运行前请确定已安装node环境）
+### 安装运行（安装运行前请确定已安装node环境）
 
 - 环境安装：npm install
 - 启动服务：npm run dev
 - 压缩代码：npm run build
-- node版本: ">=6.0"，对应需要升级node-sass，不然使用不了！
+- node版本: ">=6.0"
 
-# 本地运行注意事项
+### 本地运行注意事项
 
 <pre>
 - clone下来 先在C盘新建data文件夹 data文件夹内新建db文件夹
@@ -44,7 +44,7 @@
 - npm run dev 启动服务即可
 </pre>
 
-# 项目构成
+### 项目构成
 
 <pre>
 ├── build                           // 构建服务和webpack配置
@@ -66,11 +66,19 @@
 └──
 </pre>
 
-# 部分截图
+### 部分截图
 
 #### 首页商品页
-<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/1.gif" width="400" height="710"/>
+
+<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/1.gif" width="365" height="619"/>
+
+
 #### 商品分类页
-<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/2.gif" width="400" height="710"/>
+
+<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/2.gif" width="365" height="619"/>
+
+
 #### 购物车页
-<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/3.gif" width="400" height="710"/>
+
+<img src="https://github.com/lxj197021/vue2-mobileShop/blob/master/src/assets/images/3.gif" width="365" height="619"/>
+
