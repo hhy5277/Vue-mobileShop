@@ -199,4 +199,9 @@ export default {
 .hot-title {
   color: #f8886e;
 }
+.hot-goods {
+  height: 130rem;
+  overflow: hidden;
+  background-color: #fff;
+}
 </style>
