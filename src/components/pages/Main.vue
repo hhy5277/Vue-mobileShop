@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="main">
-            <router-view/>
+            <keep-alive>
+                <router-view/>
+            </keep-alive>
         </div>
         <van-tabbar v-model="active" @change="changeTabbar(active)">
             <van-tabbar-item icon='shop'>首页</van-tabbar-item>
@@ -16,11 +18,14 @@
 export default {
   data() {
     return {
-      active: 0
+      active: 0,
+      nowPath: ""
     };
   },
   created() {
-    // 调用判断路径的方法
+    this.changeTabBarActive();
+  },
+  updated() {
     this.changeTabBarActive();
   },
   methods: {
@@ -37,6 +42,7 @@ export default {
           this.$router.push({ name: "Cart" });
           break;
         case 3:
+          this.$router.push({ name: "Member" });
           break;
       }
     },
@@ -49,6 +55,8 @@ export default {
         this.active = 1;
       } else if (this.nowPath == "/Cart") {
         this.active = 2;
+      } else if (this.nowPath == "/Member") {
+        this.active = 3;
       }
     }
   }
