@@ -7,6 +7,7 @@ import Goods from '@/components/pages/goods'
 import CategoryList from '@/components/pages/CategoryList'
 import Cart from '@/components/pages/Cart'
 import Main from '@/components/pages/Main'
+import Member from '@/components/pages/Member'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
           name: 'Cart',
           component: Cart
         },
+        {
+          path: '/Member',
+          name: 'Member',
+          component: Member
+        }
       ]
     },
     {
