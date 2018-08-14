@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.go(-1);
+      this.$router.replace({ name: "Member" });
     },
     loginAction() {
       this.checkForm() && this.axiosLoginUser();
