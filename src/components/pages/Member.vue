@@ -7,8 +7,8 @@
             <img src="@/assets/images/errorimg.png"  class="member-img">
         </div>
         <div class="member-login">
-            <div><van-button type="warning" plain>我要登录</van-button></div>
-            <div><van-button type="primary" plain>我要注册</van-button></div>
+            <div><van-button @click="login" type="warning" plain>我要登录</van-button></div>
+            <div><van-button @click="register" type="primary" plain>我要注册</van-button></div>
         </div>
         <div>
             <van-cell-group>
@@ -25,7 +25,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    login() {
+        this.$router.replace({name:'Login'})
+    },
+    register(){
+        this.$router.replace({name:'Register'})
+    }
+  }
+};
 </script>
 
 <style scoped>
