@@ -7,7 +7,6 @@
 
 - Vue2：采用最新Vue2的语法
 - vue-router：管理单页面应用路由
-- vuex:状态管理器
 - node:后端服务
 - koa2:后端框架
 - mongoDB:数据库
